@@ -15,7 +15,7 @@ CellGrid::CellGrid(int cellLength, int cellHeight, wxSize &cellSize, wxWindow *p
 
 	this->SetBackgroundStyle(wxBG_STYLE_PAINT);
 	this->Bind(wxEVT_PAINT, &CellGrid::onPaint, this);
-	//this->Bind(wxEVT_LEFT_DOWN, &CellGrid::mouseDown, this);
+	this->Bind(wxEVT_LEFT_DOWN, &CellGrid::mouseDown, this);
 	this->SetMinSize(wxSize(this->cellSize.GetWidth()*gridLength+3, this->cellSize.GetHeight()*gridHeight+3));
 }
 
@@ -44,15 +44,15 @@ void CellGrid::onPaint(wxPaintEvent &evt) {
 	}
 }
 
-//void CellGrid::mouseDown(wxMouseEvent &evt) {
-//	if (evt.GetButton() == wxMOUSE_BTN_LEFT) {
-//		wxPoint clickPos = evt.GetPosition();
-//		CellState &cell = this->grid.at(clickPos.y / this->cellSize.GetHeight()).at(clickPos.x / this->cellSize.GetWidth());
-//		if (cell == CellState::DEAD) {
-//			cell = CellState::ALIVE;
-//		}else if (cell == CellState::ALIVE) {
-//			cell == CellState::DEAD;
-//		}
-//		Refresh();
-//	}
-//}
+void CellGrid::mouseDown(wxMouseEvent &evt) {
+	if (evt.GetButton() == wxMOUSE_BTN_LEFT) {
+		wxPoint clickPos = evt.GetPosition();
+		CellState &cell = this->grid.at(clickPos.y / this->cellSize.GetHeight()).at(clickPos.x / this->cellSize.GetWidth());
+		if (cell == CellState::DEAD) {
+			cell = CellState::ALIVE;
+		}else if (cell == CellState::ALIVE) {
+			cell = CellState::DEAD;
+		}
+		Refresh();
+	}
+}

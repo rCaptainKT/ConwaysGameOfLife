@@ -23,5 +23,5 @@ private:
 
 	// Methods
 	void onPaint(wxPaintEvent &evt);
-	//void mouseDown(wxMouseEvent &evt);s
+	void mouseDown(wxMouseEvent &evt);
 };

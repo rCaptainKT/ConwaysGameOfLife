@@ -109,7 +109,6 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(WXWIN)/include;$(WXWIN)/include/msvc</AdditionalIncludeDirectories>
-      <LanguageStandard>Default</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -126,7 +125,6 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(WXWIN)/include;$(WXWIN)/include/msvc</AdditionalIncludeDirectories>
-      <LanguageStandard>Default</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -142,8 +140,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="app.cpp" />
-    <ClCompile Include="cellgrid.cpp" />
-    <ClInclude Include="cellgrid.h" />
     <ClCompile Include="mainframe.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -21,18 +21,12 @@
     <ClInclude Include="mainframe.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="cellgrid.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="app.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="mainframe.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="cellgrid.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

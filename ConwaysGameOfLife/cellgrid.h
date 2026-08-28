@@ -1,13 +1,8 @@
 #pragma once
+#include "gameoflife.h"
 
 #include <wx/panel.h>
-
 #include <vector>
-
-enum class CellState {
-	DEAD,
-	ALIVE
-};
 
 class CellGrid : public wxPanel{
 public:

@@ -1,4 +1,5 @@
 #include "cellgrid.h"
+#include "gameoflife.h"
 
 #include <wx/panel.h>
 #include <wx/graphics.h>
@@ -27,7 +28,7 @@ void CellGrid::onPaint(wxPaintEvent &evt) {
 	if (gc) {
 		wxPoint gridOrigin = this->FromDIP(wxPoint(0, 0));
 
-		gc->SetPen(wxPen(wxColor(0, 0, 0), 1));
+		gc->SetPen(wxPen(wxColor(128, 128, 128), 1));
 		for (int i = 0; i < this->gridHeight; i++) {
 			for (int j = 0; j < this->gridLength; j++) {
 				if (this->grid.at(i).at(j) == CellState::DEAD) {

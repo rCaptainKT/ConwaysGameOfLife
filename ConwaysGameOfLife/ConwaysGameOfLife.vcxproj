@@ -138,12 +138,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="app.h" />
+    <ClInclude Include="gameoflife.h" />
+    <ClInclude Include="golinterface.h" />
     <ClInclude Include="mainframe.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="app.cpp" />
     <ClCompile Include="cellgrid.cpp" />
     <ClInclude Include="cellgrid.h" />
+    <ClCompile Include="gameoflife.cpp" />
     <ClCompile Include="mainframe.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

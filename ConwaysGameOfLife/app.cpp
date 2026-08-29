@@ -2,11 +2,13 @@
 
 #include "app.h"
 #include "mainframe.h"
+#include "gameoflife.h"
 
 wxIMPLEMENT_APP(App);
 
 bool App::OnInit() {
-	MainFrame *mainFrame = new MainFrame("Conway's Game Of Life");
+	GameOfLife gol = GameOfLife(30, 30);
+	MainFrame *mainFrame = new MainFrame(gol);
 	mainFrame->Show();
 	mainFrame->SetFocus();
 	return true;

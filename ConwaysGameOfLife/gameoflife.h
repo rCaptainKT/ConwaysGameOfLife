@@ -9,8 +9,8 @@ class GameOfLife: public GOLInterface {
 public:
 	// Methods
 	GameOfLife(int gridLength, int gridHeight);
-	int getGridLength();
-	int getGridHeight();
+	int getGridLength() override;
+	int getGridHeight() override;
 	CellState getCellState(int row, int col);
 	void setCellState(int row, int col, CellState state);
 	void toggleCell(int row, int col) override;

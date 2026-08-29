@@ -1,6 +1,5 @@
 #include "cellgrid.h"
 #include "cellstate.h"
-#include "gameoflife.h"
 
 #include <wx/panel.h>
 #include <wx/graphics.h>

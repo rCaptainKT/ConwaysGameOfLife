@@ -1,5 +1,6 @@
 #pragma once
-#include "gameoflife.h"
+
+#include "cellstate.h"
 
 #include <wx/panel.h>
 #include <vector>

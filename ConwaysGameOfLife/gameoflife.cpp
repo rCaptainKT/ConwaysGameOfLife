@@ -1,4 +1,5 @@
 #include "gameoflife.h"
+#include "cellstate.h"
 
 GameOfLife::GameOfLife(int gridLength, int gridHeight) {
 	this->gridLength = gridLength;

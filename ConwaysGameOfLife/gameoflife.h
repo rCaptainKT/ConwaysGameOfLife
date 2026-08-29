@@ -1,11 +1,8 @@
 #pragma once
 
-#include <vector>
+#include "cellstate.h"
 
-enum class CellState {
-	DEAD,
-	ALIVE
-};
+#include <vector>
 
 class GameOfLife {
 public:

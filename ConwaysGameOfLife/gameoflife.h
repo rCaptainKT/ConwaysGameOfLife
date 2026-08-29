@@ -13,7 +13,7 @@ public:
 	int getGridHeight() override;
 	CellState getCellState(int row, int col) override;
 	void setCellState(int row, int col, CellState state) override;
-	void toggleCell(int row, int col) override;
+	void toggleCellState(int row, int col) override;
 	void stepForward() override;
 	void clear() override;
 

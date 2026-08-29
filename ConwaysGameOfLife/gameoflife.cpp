@@ -23,7 +23,7 @@ void GameOfLife::setCellState(int row, int col, CellState state) {
 	this->grid.at(row).at(col) = state;
 }
 
-void GameOfLife::toggleCell(int row, int col) {
+void GameOfLife::toggleCellState(int row, int col) {
 	if (this->getCellState(row, col) == CellState::DEAD) {
 		this->setCellState(row, col, CellState::ALIVE);
 	} else if (this->getCellState(row, col) == CellState::ALIVE) {

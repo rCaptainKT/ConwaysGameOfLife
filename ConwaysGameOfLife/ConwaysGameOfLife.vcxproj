@@ -138,6 +138,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="app.h" />
+    <ClInclude Include="cellstate.h" />
     <ClInclude Include="gameoflife.h" />
     <ClInclude Include="golinterface.h" />
     <ClInclude Include="mainframe.h" />

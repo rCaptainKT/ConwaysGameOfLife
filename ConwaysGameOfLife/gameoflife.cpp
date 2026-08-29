@@ -69,3 +69,7 @@ void GameOfLife::clear() {
 		}
 	}
 }
+
+const std::vector<std::vector<CellState>>& GameOfLife::getGridAsVector() const {
+	return this->grid;
+}

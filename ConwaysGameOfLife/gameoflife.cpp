@@ -7,6 +7,14 @@ GameOfLife::GameOfLife(int gridLength, int gridHeight) {
 	this->grid = std::vector<std::vector<CellState>>(gridHeight, std::vector<CellState>(gridLength, CellState::DEAD));
 }
 
+int GameOfLife::getGridLength() {
+	return this->gridLength;
+}
+
+int GameOfLife::getGridHeight() {
+	return this->gridHeight;
+}
+
 CellState GameOfLife::getCellState(int row, int col) {
 	return this->grid.at(row).at(col);
 }

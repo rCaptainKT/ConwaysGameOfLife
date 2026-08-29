@@ -19,5 +19,5 @@ private:
 	wxButton *playButton;
 	wxButton *stepForwardButton;
 	wxButton *stepBackButton;
-	wxButton *resetButton;
+	wxButton *clearButton;
 };

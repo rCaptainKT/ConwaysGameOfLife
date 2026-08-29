@@ -23,13 +23,13 @@ MainFrame::MainFrame(const wxString &title) : wxFrame(nullptr, wxID_ANY, title) 
 	playButton = new wxButton(mainPanel, wxID_ANY, "Play", wxDefaultPosition, controlButtonSize);
 	stepForwardButton = new wxButton(mainPanel, wxID_ANY, "Step Foward", wxDefaultPosition, controlButtonSize);
 	stepBackButton = new wxButton(mainPanel, wxID_ANY, "Step Back", wxDefaultPosition, controlButtonSize);
-	resetButton = new wxButton(mainPanel, wxID_ANY, "Reset", wxDefaultPosition, controlButtonSize);
+	clearButton = new wxButton(mainPanel, wxID_ANY, "Clear", wxDefaultPosition, controlButtonSize);
 
 	// Set Control Sizer
 	controlSizer->Add(playButton);
 	controlSizer->Add(stepForwardButton);
 	controlSizer->Add(stepBackButton);
-	controlSizer->Add(resetButton);
+	controlSizer->Add(clearButton);
 
 	//// Create Grid Cells
 	wxSize cellSize = wxSize(25, 25);

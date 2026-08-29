@@ -1,7 +1,7 @@
 #pragma once
 
 #include "cellstate.h"
-#include "GOLInterface.h"
+#include "golinterface.h"
 
 #include <vector>
 
@@ -11,13 +11,14 @@ public:
 	GameOfLife(int gridLength, int gridHeight);
 	int getGridLength() override;
 	int getGridHeight() override;
-	CellState getCellState(int row, int col);
-	void setCellState(int row, int col, CellState state);
+	CellState getCellState(int row, int col) override;
+	void setCellState(int row, int col, CellState state) override;
 	void toggleCell(int row, int col) override;
 	void stepForward() override;
 	void clear() override;
 
-	const std::vector<std::vector<CellState>>& getGridAsVector() const override;
+	CellState dead() override;
+	CellState alive() override;
 
 private:
 	// Members

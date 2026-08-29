@@ -78,6 +78,10 @@ void GameOfLife::clear() {
 	}
 }
 
-const std::vector<std::vector<CellState>>& GameOfLife::getGridAsVector() const {
-	return this->grid;
+CellState GameOfLife::dead() {
+	return CellState::DEAD;
+}
+
+CellState GameOfLife::alive() {
+	return CellState::ALIVE;
 }

@@ -6,10 +6,17 @@
 
 wxIMPLEMENT_APP(App);
 
+App::App()
+	:gol (new GameOfLife(30, 20)) {}
+
 bool App::OnInit() {
-	GameOfLife gol = GameOfLife(30, 30);
-	MainFrame *mainFrame = new MainFrame(gol);
+	MainFrame *mainFrame = new MainFrame(*gol);
 	mainFrame->Show();
 	mainFrame->SetFocus();
 	return true;
+}
+
+int App::OnExit() {
+	delete gol;
+	return wxApp::OnExit();
 }

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "cellgrid.h"
+#include "golinterface.h"
 
 #include <wx/frame.h>
 #include <wx/panel.h>
@@ -10,7 +11,7 @@
 class MainFrame : public wxFrame {
 public:
 	// Methods
-	MainFrame(const wxString &title);
+	MainFrame(GOLInterface &gol);
 private:
 	// Members
 	wxPanel *mainPanel;
@@ -22,4 +23,6 @@ private:
 	wxButton *stepBackButton;
 	wxButton *clearButton;
 	CellGrid *cellGrid;
+
+	GOLInterface &gol;
 };

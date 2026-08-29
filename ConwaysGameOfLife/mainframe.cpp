@@ -1,5 +1,6 @@
 #include "mainframe.h"
 #include "cellgrid.h"
+#include "golinterface.h"
 
 #include <wx/frame.h>
 #include <wx/panel.h>
@@ -8,10 +9,10 @@
 #include <wx/grid.h>
 #include <vector>
 
-MainFrame::MainFrame(const wxString &title) : wxFrame(nullptr, wxID_ANY, title) {
-	int gridLength = 30;
-	int gridHeight = 30;
-	
+#define APP_NAME "Conway's Game Of Life"
+
+MainFrame::MainFrame(GOLInterface &gol)
+	: wxFrame(nullptr, wxID_ANY, APP_NAME), gol(gol) {
 	// Create Main Widgets
 	mainPanel = new wxPanel(this);
 	mainSizer = new wxBoxSizer(wxHORIZONTAL);
@@ -30,9 +31,9 @@ MainFrame::MainFrame(const wxString &title) : wxFrame(nullptr, wxID_ANY, title) 
 	controlSizer->Add(stepBackButton);
 	controlSizer->Add(clearButton);
 
-	//// Create Grid Cells
-	wxSize cellSize = wxSize(25, 25);
-	cellGrid = new CellGrid(gridLength, gridHeight, cellSize, mainPanel, wxID_ANY);
+	// Create Cell Grid
+	wxSize cellSize = FromDIP(wxSize(25, 25));
+	cellGrid = new CellGrid(this->gol.getGridLength(), this->gol.getGridHeight(), cellSize, mainPanel, wxID_ANY);
 
 	// Set Main Sizer
 	mainSizer->Add(controlSizer, 0, wxALIGN_CENTER);

@@ -16,7 +16,6 @@ MainFrame::MainFrame(const wxString &title) : wxFrame(nullptr, wxID_ANY, title) 
 	mainPanel = new wxPanel(this);
 	mainSizer = new wxBoxSizer(wxHORIZONTAL);
 	controlSizer = new wxBoxSizer(wxVERTICAL);
-	//gridSizer = new wxGridSizer(gridLength, gridHeight, 0, 0);
 
 	// Create Control Buttons
 	wxSize controlButtonSize = wxSize(200, 50);
@@ -33,7 +32,7 @@ MainFrame::MainFrame(const wxString &title) : wxFrame(nullptr, wxID_ANY, title) 
 
 	//// Create Grid Cells
 	wxSize cellSize = wxSize(25, 25);
-	CellGrid *cellGrid = new CellGrid(gridLength, gridHeight, cellSize, mainPanel, wxID_ANY);
+	cellGrid = new CellGrid(gridLength, gridHeight, cellSize, mainPanel, wxID_ANY);
 
 	// Set Main Sizer
 	mainSizer->Add(controlSizer, 0, wxALIGN_CENTER);

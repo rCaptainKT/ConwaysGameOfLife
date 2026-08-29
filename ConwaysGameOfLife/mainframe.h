@@ -1,5 +1,7 @@
 #pragma once
 
+#include "cellgrid.h"
+
 #include <wx/frame.h>
 #include <wx/panel.h>
 #include <wx/sizer.h>
@@ -14,10 +16,10 @@ private:
 	wxPanel *mainPanel;
 	wxBoxSizer *mainSizer;
 	wxBoxSizer *controlSizer;
-	wxGridSizer *gridSizer;
 
 	wxButton *playButton;
 	wxButton *stepForwardButton;
 	wxButton *stepBackButton;
 	wxButton *clearButton;
+	CellGrid *cellGrid;
 };

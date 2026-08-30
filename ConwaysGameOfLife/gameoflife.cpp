@@ -33,6 +33,10 @@ void GameOfLife::toggleCellState(int row, int col) {
 	}
 }
 
+CellState GameOfLife::getGridCopyCellState(int row, int col) {
+	return this->gridCopy.at(row).at(col);
+}
+
 void GameOfLife::stepForward() {
 	this->gridCopy = this->grid;
 
@@ -43,12 +47,12 @@ void GameOfLife::stepForward() {
 				if (k < 0 || k > this->gridHeight-1) {
 					continue;
 				}
-				for (int l = j - 1; j < j + 2; l++) {
+				for (int l = j - 1; l < j + 2; l++) {
 					if (l < 0 || l > this->gridLength - 1) {
 						continue;
 					} else if (i == k && j == l) {
 						continue;
-					} else if (this->getCellState(k, l) == CellState::ALIVE) {
+					} else if (this->getGridCopyCellState(k, l) == CellState::ALIVE) {
 						neighbours++;
 					}
 				}

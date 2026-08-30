@@ -26,4 +26,7 @@ private:
 	int gridHeight;
 	std::vector<std::vector<CellState>> grid;
 	std::vector<std::vector<CellState>> gridCopy;
+
+	// Methods
+	CellState getGridCopyCellState(int row, int col);
 };

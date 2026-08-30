@@ -1,6 +1,8 @@
 #include "gameoflife.h"
 #include "cellstate.h"
 
+#include <vector>
+
 GameOfLife::GameOfLife(int gridLength, int gridHeight) {
 	this->gridLength = gridLength;
 	this->gridHeight = gridHeight;

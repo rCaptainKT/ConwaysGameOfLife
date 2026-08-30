@@ -2,8 +2,6 @@
 
 #include "cellstate.h"
 
-#include <vector>
-
 class GOLInterface {
 public:
 	// Methods

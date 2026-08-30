@@ -7,7 +7,6 @@
 #include <wx/sizer.h>
 #include <wx/button.h>
 #include <wx/grid.h>
-#include <vector>
 
 #define APP_NAME "Conway's Game Of Life"
 

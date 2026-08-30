@@ -5,7 +5,6 @@
 #include <wx/panel.h>
 #include <wx/graphics.h>
 #include <wx/dcbuffer.h>
-#include <vector>
 
 CellGrid::CellGrid(GOLInterface &gol, wxSize &cellSize, wxWindow *parent, wxWindowID id,
 	const wxPoint &pos, const wxSize &size, long style, const wxString &name)

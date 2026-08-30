@@ -33,7 +33,7 @@ MainFrame::MainFrame(GOLInterface &gol)
 
 	// Create Cell Grid
 	wxSize cellSize = FromDIP(wxSize(25, 25));
-	cellGrid = new CellGrid(this->gol.getGridLength(), this->gol.getGridHeight(), cellSize, mainPanel, wxID_ANY);
+	cellGrid = new CellGrid(this->gol, cellSize, mainPanel, wxID_ANY);
 
 	// Set Main Sizer
 	mainSizer->Add(controlSizer, 0, wxALIGN_CENTER);

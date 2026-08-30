@@ -27,6 +27,7 @@ MainFrame::MainFrame(GOLInterface &gol)
 
 	// Bind Control Buttons
 	stepForwardButton->Bind(wxEVT_BUTTON, &MainFrame::onStepForwardButtonClick, this);
+	clearButton->Bind(wxEVT_BUTTON, &MainFrame::onClearButtonClick, this);
 
 	// Set Control Sizer
 	controlSizer->Add(playButton);
@@ -52,5 +53,10 @@ MainFrame::MainFrame(GOLInterface &gol)
 
 void MainFrame::onStepForwardButtonClick(wxCommandEvent &evt) {
 	gol.stepForward();
+	cellGrid->Refresh();
+}
+
+void MainFrame::onClearButtonClick(wxCommandEvent &evt) {
+	gol.clear();
 	cellGrid->Refresh();
 }

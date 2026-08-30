@@ -29,4 +29,5 @@ private:
 
 	// Methods
 	void onStepForwardButtonClick(wxCommandEvent &evt);
+	void onClearButtonClick(wxCommandEvent &evt);
 };

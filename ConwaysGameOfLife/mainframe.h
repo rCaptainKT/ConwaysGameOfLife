@@ -7,6 +7,7 @@
 #include <wx/panel.h>
 #include <wx/sizer.h>
 #include <wx/button.h>
+#include <wx/event.h>
 
 class MainFrame : public wxFrame {
 public:
@@ -25,4 +26,7 @@ private:
 	CellGrid *cellGrid;
 
 	GOLInterface &gol;
+
+	// Methods
+	void onStepForwardButtonClick(wxCommandEvent &evt);
 };

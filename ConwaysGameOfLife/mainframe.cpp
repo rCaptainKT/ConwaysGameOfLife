@@ -7,6 +7,7 @@
 #include <wx/sizer.h>
 #include <wx/button.h>
 #include <wx/grid.h>
+#include <wx/event.h>
 
 #define APP_NAME "Conway's Game Of Life"
 
@@ -23,6 +24,9 @@ MainFrame::MainFrame(GOLInterface &gol)
 	stepForwardButton = new wxButton(mainPanel, wxID_ANY, "Step Foward", wxDefaultPosition, controlButtonSize);
 	stepBackButton = new wxButton(mainPanel, wxID_ANY, "Step Back", wxDefaultPosition, controlButtonSize);
 	clearButton = new wxButton(mainPanel, wxID_ANY, "Clear", wxDefaultPosition, controlButtonSize);
+
+	// Bind Control Buttons
+	stepForwardButton->Bind(wxEVT_BUTTON, &MainFrame::onStepForwardButtonClick, this);
 
 	// Set Control Sizer
 	controlSizer->Add(playButton);
@@ -44,4 +48,9 @@ MainFrame::MainFrame(GOLInterface &gol)
 	// Set Frame
 	//SetClientSize(800, 800);
 	Center();
+}
+
+void MainFrame::onStepForwardButtonClick(wxCommandEvent &evt) {
+	gol.stepForward();
+	cellGrid->Refresh();
 }

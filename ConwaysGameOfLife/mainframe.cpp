@@ -8,11 +8,15 @@
 #include <wx/button.h>
 #include <wx/grid.h>
 #include <wx/event.h>
+#include <wx/timer.h>
 
 #define APP_NAME "Conway's Game Of Life"
 
 MainFrame::MainFrame(GOLInterface &gol)
-	: wxFrame(nullptr, wxID_ANY, APP_NAME), gol(gol) {
+	: wxFrame(nullptr, wxID_ANY, APP_NAME)
+	, gol(gol)
+	, isPlaying(false)
+	, playTimer(this) {
 	// Create Main Widgets
 	mainPanel = new wxPanel(this);
 	mainSizer = new wxBoxSizer(wxHORIZONTAL);
@@ -26,8 +30,12 @@ MainFrame::MainFrame(GOLInterface &gol)
 	clearButton = new wxButton(mainPanel, wxID_ANY, "Clear", wxDefaultPosition, controlButtonSize);
 
 	// Bind Control Buttons
+	playButton->Bind(wxEVT_BUTTON, &MainFrame::onPlayButtonClick, this);
 	stepForwardButton->Bind(wxEVT_BUTTON, &MainFrame::onStepForwardButtonClick, this);
 	clearButton->Bind(wxEVT_BUTTON, &MainFrame::onClearButtonClick, this);
+
+	// Bind Play Timer
+	Bind(wxEVT_TIMER, &MainFrame::onPlayTimerNotify, this);
 
 	// Set Control Sizer
 	controlSizer->Add(playButton);
@@ -51,12 +59,38 @@ MainFrame::MainFrame(GOLInterface &gol)
 	Center();
 }
 
+void MainFrame::onPlayButtonClick(wxCommandEvent &evt) {
+	if (!isPlaying) {
+		// Pressed play
+		isPlaying = true;
+		playButton->SetLabel("Stop");
+		stepForwardButton->Disable();
+		stepBackButton->Disable();
+		playTimer.Start(100);
+	} else {
+		// Pressed stop
+		playTimer.Stop();
+		stepForwardButton->Enable();
+		stepBackButton->Enable();
+		playButton->SetLabel("Play");
+		isPlaying = false;
+	}
+}
+
+void MainFrame::onPlayTimerNotify(wxTimerEvent &evt) {
+	onStepForwardEvent();
+}
+
 void MainFrame::onStepForwardButtonClick(wxCommandEvent &evt) {
-	gol.stepForward();
-	cellGrid->Refresh();
+	onStepForwardEvent();
 }
 
 void MainFrame::onClearButtonClick(wxCommandEvent &evt) {
 	gol.clear();
+	cellGrid->Refresh();
+}
+
+void MainFrame::onStepForwardEvent() {
+	gol.stepForward();
 	cellGrid->Refresh();
 }

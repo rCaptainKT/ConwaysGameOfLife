@@ -8,6 +8,7 @@
 #include <wx/sizer.h>
 #include <wx/button.h>
 #include <wx/event.h>
+#include <wx/timer.h>
 
 class MainFrame : public wxFrame {
 public:
@@ -26,8 +27,14 @@ private:
 	CellGrid *cellGrid;
 
 	GOLInterface &gol;
+	bool isPlaying;
+	wxTimer playTimer;
 
 	// Methods
+	void onPlayButtonClick(wxCommandEvent &evt);
+	void onPlayTimerNotify(wxTimerEvent &evt);
 	void onStepForwardButtonClick(wxCommandEvent &evt);
 	void onClearButtonClick(wxCommandEvent &evt);
+
+	void onStepForwardEvent();
 };

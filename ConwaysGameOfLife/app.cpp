@@ -7,7 +7,7 @@
 wxIMPLEMENT_APP(App);
 
 App::App()
-	:gol (new GameOfLife(30, 20)) {}
+	:gol (new GameOfLife(30, 30)) {}
 
 bool App::OnInit() {
 	MainFrame *mainFrame = new MainFrame(*gol);

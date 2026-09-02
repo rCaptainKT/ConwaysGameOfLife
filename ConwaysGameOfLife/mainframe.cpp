@@ -9,16 +9,22 @@
 #include <wx/grid.h>
 #include <wx/event.h>
 #include <wx/timer.h>
+#include <wx/hyperlink.h>
 
 #define APP_NAME "Conway's Game Of Life"
+#define REPO_LINK "https://github.com/rCaptainKT/ConwaysGameOfLife"
 
 MainFrame::MainFrame(GOLInterface &gol)
 	: wxFrame(nullptr, wxID_ANY, APP_NAME)
 	, gol(gol)
 	, isPlaying(false)
 	, playTimer(this) {
+	// Create App Sizer
+	appSizer = new wxBoxSizer(wxVERTICAL);
+	appPanel = new wxPanel(this);
+
 	// Create Main Widgets
-	mainPanel = new wxPanel(this);
+	mainPanel = new wxPanel(appPanel);
 	mainSizer = new wxBoxSizer(wxHORIZONTAL);
 	controlSizer = new wxBoxSizer(wxVERTICAL);
 
@@ -51,11 +57,19 @@ MainFrame::MainFrame(GOLInterface &gol)
 	mainSizer->Add(controlSizer, 0, wxALIGN_CENTER);
 	mainSizer->Add(cellGrid, 0, wxALIGN_CENTER);
 	mainPanel->SetSizer(mainSizer);
-	mainSizer->Fit(mainPanel);
-	mainSizer->SetSizeHints(this);
+ 
+	// Create Footer Panel
+	footerPanel = new wxPanel(appPanel);
+	repoLink = new wxHyperlinkCtrl(footerPanel, wxID_ANY, "Github", REPO_LINK);
 
+	// Set App Sizer
+	appSizer->Add(mainPanel, 0, wxALIGN_CENTER);
+	appSizer->Add(footerPanel, 0, wxALIGN_LEFT | wxALL, 3);
+	appPanel->SetSizer(appSizer);
+	appSizer->SetSizeHints(this);
+	 
 	// Set Frame
-	//SetClientSize(800, 800);
+	SetClientSize(DoGetBestClientSize());
 	Center();
 }
 

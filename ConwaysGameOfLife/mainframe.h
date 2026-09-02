@@ -9,6 +9,7 @@
 #include <wx/button.h>
 #include <wx/event.h>
 #include <wx/timer.h>
+#include <wx/hyperlink.h>
 
 class MainFrame : public wxFrame {
 public:
@@ -16,6 +17,9 @@ public:
 	MainFrame(GOLInterface &gol);
 private:
 	// Members
+	wxBoxSizer *appSizer;
+	wxPanel *appPanel;
+
 	wxPanel *mainPanel;
 	wxBoxSizer *mainSizer;
 	wxBoxSizer *controlSizer;
@@ -29,6 +33,9 @@ private:
 	GOLInterface &gol;
 	bool isPlaying;
 	wxTimer playTimer;
+
+	wxPanel *footerPanel;
+	wxHyperlinkCtrl *repoLink;
 
 	// Methods
 	void onPlayButtonClick(wxCommandEvent &evt);

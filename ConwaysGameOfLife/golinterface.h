@@ -13,6 +13,9 @@ public:
 	virtual void toggleCellState(int row, int col) = 0;
 	virtual void stepForward() = 0;
 	virtual void clear() = 0;
+	virtual void saveGridState() = 0;
+	virtual void loadGridState() = 0;
+	virtual bool getIsModified() = 0;
 
 	virtual CellState dead() = 0;
 	virtual CellState alive() = 0;

@@ -7,6 +7,8 @@ GameOfLife::GameOfLife(int gridLength, int gridHeight) {
 	this->gridLength = gridLength;
 	this->gridHeight = gridHeight;
 	this->grid = std::vector<std::vector<CellState>>(gridHeight, std::vector<CellState>(gridLength, CellState::DEAD));
+	this->gridSaveState = this->grid;
+	this->isModified = false;
 }
 
 int GameOfLife::getGridLength() {
@@ -22,14 +24,24 @@ CellState GameOfLife::getCellState(int row, int col) {
 }
 
 void GameOfLife::setCellState(int row, int col, CellState state) {
+	this->setCellState_(row, col, state);
+	this->isModified = true;
+}
+
+void GameOfLife::setCellState_(int row, int col, CellState state) {
 	this->grid.at(row).at(col) = state;
 }
 
 void GameOfLife::toggleCellState(int row, int col) {
+	this->toggleCellState_(row, col);
+	this->isModified = true;
+}
+
+void GameOfLife::toggleCellState_(int row, int col) {
 	if (this->getCellState(row, col) == CellState::DEAD) {
-		this->setCellState(row, col, CellState::ALIVE);
+		this->setCellState_(row, col, CellState::ALIVE);
 	} else if (this->getCellState(row, col) == CellState::ALIVE) {
-		this->setCellState(row, col, CellState::DEAD);
+		this->setCellState_(row, col, CellState::DEAD);
 	}
 }
 
@@ -61,19 +73,21 @@ void GameOfLife::stepForward() {
 			if (this->getCellState(i, j) == CellState::ALIVE) {
 				if (neighbours < 2) {
 					// Underpopulation
-					this->setCellState(i, j, CellState::DEAD);
+					this->setCellState_(i, j, CellState::DEAD);
 				} else if (neighbours > 3) {
 					// Overpopulation
-					this->setCellState(i, j, CellState::DEAD);
+					this->setCellState_(i, j, CellState::DEAD);
 				}
 			} else {
 				if (neighbours == 3) {
 					// Reproduction
-					this->setCellState(i, j, CellState::ALIVE);
+					this->setCellState_(i, j, CellState::ALIVE);
 				}
 			}
 		}
 	}
+
+	this->isModified = true;
 }
 
 void GameOfLife::clear() {
@@ -82,6 +96,22 @@ void GameOfLife::clear() {
 			this->grid.at(i).at(j) = CellState::DEAD;
 		}
 	}
+	this->gridSaveState = this->grid;
+	this->isModified = false;
+}
+
+void GameOfLife::saveGridState() {
+	this->gridSaveState = this->grid;
+	this->isModified = false;
+}
+
+void GameOfLife::loadGridState() {
+	this->grid = this->gridSaveState;
+	this->isModified = false;
+}
+
+bool GameOfLife::getIsModified() {
+	return this->isModified;
 }
 
 CellState GameOfLife::dead() {

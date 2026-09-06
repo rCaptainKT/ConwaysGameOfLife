@@ -26,7 +26,6 @@ private:
 
 	wxButton *playButton;
 	wxButton *stepForwardButton;
-	wxButton *stepBackButton;
 	wxButton *clearButton;
 	CellGrid *cellGrid;
 

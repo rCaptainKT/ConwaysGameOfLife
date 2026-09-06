@@ -32,7 +32,6 @@ MainFrame::MainFrame(GOLInterface &gol)
 	wxSize controlButtonSize = wxSize(200, 50);
 	playButton = new wxButton(mainPanel, wxID_ANY, "Play", wxDefaultPosition, controlButtonSize);
 	stepForwardButton = new wxButton(mainPanel, wxID_ANY, "Step Foward", wxDefaultPosition, controlButtonSize);
-	stepBackButton = new wxButton(mainPanel, wxID_ANY, "Step Back", wxDefaultPosition, controlButtonSize);
 	clearButton = new wxButton(mainPanel, wxID_ANY, "Clear", wxDefaultPosition, controlButtonSize);
 
 	// Bind Control Buttons
@@ -46,7 +45,6 @@ MainFrame::MainFrame(GOLInterface &gol)
 	// Set Control Sizer
 	controlSizer->Add(playButton);
 	controlSizer->Add(stepForwardButton);
-	controlSizer->Add(stepBackButton);
 	controlSizer->Add(clearButton);
 
 	// Create Cell Grid
@@ -79,13 +77,11 @@ void MainFrame::onPlayButtonClick(wxCommandEvent &evt) {
 		isPlaying = true;
 		playButton->SetLabel("Stop");
 		stepForwardButton->Disable();
-		stepBackButton->Disable();
 		playTimer.Start(100);
 	} else {
 		// Pressed stop
 		playTimer.Stop();
 		stepForwardButton->Enable();
-		stepBackButton->Enable();
 		playButton->SetLabel("Play");
 		isPlaying = false;
 	}

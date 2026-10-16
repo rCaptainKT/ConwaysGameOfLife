@@ -18,6 +18,7 @@ MainFrame::MainFrame(GOLInterface &gol)
 	: wxFrame(nullptr, wxID_ANY, APP_NAME)
 	, gol(gol)
 	, isPlaying(false)
+	, isClearReset(false)
 	, playTimer(this) {
 	// Create App Sizer
 	appSizer = new wxBoxSizer(wxVERTICAL);
@@ -96,11 +97,27 @@ void MainFrame::onStepForwardButtonClick(wxCommandEvent &evt) {
 }
 
 void MainFrame::onClearButtonClick(wxCommandEvent &evt) {
-	gol.clear();
+	if (!isClearReset) {
+		gol.clear();
+	} else {
+		gol.loadGridState();
+	}
+	updateClearButton();
 	cellGrid->Refresh();
 }
 
 void MainFrame::onStepForwardEvent() {
 	gol.stepForward();
+	updateClearButton();
 	cellGrid->Refresh();
+}
+
+void MainFrame::updateClearButton() {
+	if (gol.getIsModified()) {
+		isClearReset = true;
+		clearButton->SetLabel("Reset");
+	} else {
+		isClearReset = false;
+		clearButton->SetLabel("Clear");
+	}
 }

@@ -25,7 +25,8 @@ CellState GameOfLife::getCellState(int row, int col) {
 
 void GameOfLife::setCellState(int row, int col, CellState state) {
 	this->setCellState_(row, col, state);
-	this->isModified = true;
+	this->gridSaveState = this->grid;
+	this->isModified = false;
 }
 
 void GameOfLife::setCellState_(int row, int col, CellState state) {
@@ -34,7 +35,8 @@ void GameOfLife::setCellState_(int row, int col, CellState state) {
 
 void GameOfLife::toggleCellState(int row, int col) {
 	this->toggleCellState_(row, col);
-	this->isModified = true;
+	this->gridSaveState = this->grid;
+	this->isModified = false;
 }
 
 void GameOfLife::toggleCellState_(int row, int col) {

@@ -32,6 +32,7 @@ private:
 	GOLInterface &gol;
 	bool isPlaying;
 	wxTimer playTimer;
+	bool isClearReset;
 
 	wxPanel *footerPanel;
 	wxHyperlinkCtrl *repoLink;
@@ -43,4 +44,5 @@ private:
 	void onClearButtonClick(wxCommandEvent &evt);
 
 	void onStepForwardEvent();
+	void updateClearButton();
 };

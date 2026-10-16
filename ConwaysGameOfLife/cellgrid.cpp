@@ -49,3 +49,8 @@ void CellGrid::onMouseDown(wxMouseEvent &evt) {
 		Refresh();
 	}
 }
+
+/*
+* TODO:
+* Propagate event to mainframe.
+*/
